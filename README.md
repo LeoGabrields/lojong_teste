@@ -1,16 +1,17 @@
 # lojong_teste
 
-A new Flutter project.
+Teste
 
-## Getting Started
+# Screenshots
 
-This project is a starting point for a Flutter application.
+### Nexus One
+<img src="screenshots/nexus_One.png">
 
-A few resources to get you started if this is your first Flutter project:
+### Nexus 4
+<img src="screenshots/nexus_4.png">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Nexus 6
+<img src="screenshots/nexus_6.png">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Nexus 9
+<img src="screenshots/nexus_9.png">
