@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:lojong_teste/src/data/cache/data_cache.dart';
+import 'package:lojong_teste/src/features/article/viewmodel/article_viewmodel.dart';
+import 'package:lojong_teste/src/features/quotes/viewmodel/quotes_viewmodel.dart';
+import 'package:lojong_teste/src/features/video/viewmodel/video_viewmodel.dart';
 
 import 'package:provider/provider.dart';
 
 import 'package:lojong_teste/src/core/rest_client/rest_client.dart';
-import 'package:lojong_teste/src/data/repositories/article/article_repository.dart';
-import 'package:lojong_teste/src/data/repositories/article/article_repository_impl.dart';
-import 'package:lojong_teste/src/data/repositories/quote/quote_repository.dart';
-import 'package:lojong_teste/src/data/repositories/quote/quote_repository_impl.dart';
-import 'package:lojong_teste/src/data/repositories/video/video_repository.dart';
-import 'package:lojong_teste/src/data/repositories/video/video_repository_impl.dart';
-import 'package:lojong_teste/src/view_model/inspiration_view_model.dart';
+import 'package:lojong_teste/src/features/article/repositories/article_repository.dart';
+import 'package:lojong_teste/src/features/article/repositories/article_repository_impl.dart';
+import 'package:lojong_teste/src/features/quotes/repositories/quote_repository.dart';
+import 'package:lojong_teste/src/features/quotes/repositories/quote_repository_impl.dart';
+import 'package:lojong_teste/src/features/video/repositories/video_repository.dart';
+import 'package:lojong_teste/src/features/video/repositories/video_repository_impl.dart';
 
 class ApplicationBinding extends StatelessWidget {
   final Widget child;
@@ -38,16 +39,19 @@ class ApplicationBinding extends StatelessWidget {
             restClient: context.read(),
           ),
         ),
-        Provider(
-          create: (context) => DataCache(
+        ChangeNotifierProvider(
+          create: (context) => ArticleViewModel(
             articleRepository: context.read(),
-            quoteRepository: context.read(),
-            videoRepository: context.read(),
           ),
         ),
         ChangeNotifierProvider(
-          create: (context) => InspirationViewModel(
-            dataCache: context.read(),
+          create: (context) => QuotesViewModel(
+            quoteRepository: context.read(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => VideoViewModel(
+            videoRepository: context.read(),
           ),
         ),
       ],
