@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lojong_teste/src/core/ui/styles/text_styles.dart';
 import 'package:lojong_teste/src/features/article/models/article_content_model.dart';
@@ -63,15 +64,8 @@ class ArticlesDetailsView extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(height: 10),
-                        Text(
-                          article.fullText,
-                          textAlign: TextAlign.justify,
-                          style: context.textStyles.textRegular.copyWith(
-                            fontSize: 15,
-                            color: const Color(0xFF707481),
-                          ),
-                        ),
+                        const SizedBox(height: 15),
+                        Html(data: article.fullText),
                         const SizedBox(height: 15),
                         Container(
                           padding: const EdgeInsets.symmetric(
