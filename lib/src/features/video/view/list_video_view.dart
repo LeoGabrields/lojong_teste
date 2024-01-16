@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lojong_teste/src/core/ui/styles/text_styles.dart';
-import 'package:lojong_teste/src/core/ui/widgets/show_error_widget.dart';
+import 'package:lojong_teste/src/core/ui/widgets/show_loading_widget.dart';
 import 'package:lojong_teste/src/core/ui/widgets/shared_button_widget.dart';
 import 'package:lojong_teste/src/features/video/view/widgets/video_card_player_widget.dart';
 import 'package:lojong_teste/src/features/video/viewmodel/video_viewmodel.dart';
@@ -15,12 +15,22 @@ class VideoView extends StatefulWidget {
 }
 
 class _VideoViewState extends State<VideoView> {
+  late final videoViewModel = Provider.of<VideoViewModel>(context);
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      videoViewModel;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final videoViewModel = Provider.of<VideoViewModel>(context);
     final videos = videoViewModel.videos;
 
-    return ShowErrorWidget(
+    return ShowLoadingWidget(
+      isLoading: videoViewModel.isLoading,
       hasError: videoViewModel.hasError,
       onPressed: () {
         setState(() {

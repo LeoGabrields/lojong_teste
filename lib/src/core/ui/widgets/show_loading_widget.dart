@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:lojong_teste/src/core/ui/styles/colors_app.dart';
 import 'package:lojong_teste/src/core/ui/styles/text_styles.dart';
 
-class ShowErrorWidget extends StatelessWidget {
+class ShowLoadingWidget extends StatelessWidget {
+  final bool isLoading;
   final bool hasError;
   final Widget child;
   final void Function()? onPressed;
 
-  const ShowErrorWidget({
+  const ShowLoadingWidget({
     super.key,
+    required this.isLoading,
     required this.hasError,
     required this.child,
     required this.onPressed,
@@ -15,6 +18,13 @@ class ShowErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return Center(
+        child: CircularProgressIndicator(
+          color: context.colors.primary,
+        ),
+      );
+    }
     return hasError
         ? Center(
             child: Padding(

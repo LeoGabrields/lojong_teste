@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lojong_teste/src/core/ui/widgets/show_error_widget.dart';
+import 'package:lojong_teste/src/core/ui/widgets/show_loading_widget.dart';
 
 import 'package:lojong_teste/src/features/quotes/view/widgets/quote_card_widget.dart';
 import 'package:lojong_teste/src/features/quotes/viewmodel/quotes_viewmodel.dart';
@@ -46,7 +46,8 @@ class _QuoteViewState extends State<QuoteView> {
   Widget build(BuildContext context) {
     final quotes = quotesViewModel.quotes;
 
-    return ShowErrorWidget(
+    return ShowLoadingWidget(
+      isLoading: quotesViewModel.isLoading,
       hasError: quotesViewModel.hasError,
       onPressed: () {
         setState(() {

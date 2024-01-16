@@ -12,14 +12,18 @@ class VideoViewModel extends ChangeNotifier {
 
   List<VideoModel> videos = [];
   bool hasError = false;
+  bool isLoading = false;
 
   Future<void> loadVideos() async {
+    isLoading = true;
     final result = await videoRepository.getVideosList();
 
     result.fold(
       (l) => hasError = true,
       (listVideoModel) => videos.addAll(listVideoModel),
     );
+
+    isLoading = false;
 
     notifyListeners();
   }

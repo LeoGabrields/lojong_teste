@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lojong_teste/src/core/ui/widgets/show_error_widget.dart';
+import 'package:lojong_teste/src/core/ui/widgets/show_loading_widget.dart';
 
 import 'package:lojong_teste/src/features/article/view/widgets/articles_tile_widget.dart';
 import 'package:lojong_teste/src/features/article/viewmodel/article_viewmodel.dart';
@@ -46,7 +46,8 @@ class _ArticlesViewState extends State<ArticlesView> {
   Widget build(BuildContext context) {
     final articles = articleViewModel.articles;
 
-    return ShowErrorWidget(
+    return ShowLoadingWidget(
+      isLoading: articleViewModel.isLoading,
       hasError: articleViewModel.hasError,
       onPressed: () {
         setState(() {
