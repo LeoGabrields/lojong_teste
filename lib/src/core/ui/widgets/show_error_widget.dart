@@ -4,11 +4,13 @@ import 'package:lojong_teste/src/core/ui/styles/text_styles.dart';
 class ShowErrorWidget extends StatelessWidget {
   final bool hasError;
   final Widget child;
+  final void Function()? onPressed;
 
   const ShowErrorWidget({
     super.key,
     required this.hasError,
     required this.child,
+    required this.onPressed,
   });
 
   @override
@@ -40,7 +42,7 @@ class ShowErrorWidget extends StatelessWidget {
                       elevation: 0,
                       backgroundColor: const Color(0xFFECECEC),
                     ),
-                    onPressed: () {},
+                    onPressed: onPressed,
                     child: Text(
                       'Recarregar',
                       style: context.textStyles.textSemiBold.copyWith(

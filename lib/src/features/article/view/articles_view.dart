@@ -48,6 +48,12 @@ class _ArticlesViewState extends State<ArticlesView> {
 
     return ShowErrorWidget(
       hasError: articleViewModel.hasError,
+      onPressed: () {
+        setState(() {
+          articleViewModel.currentPage = 0;
+          articleViewModel.loadArticles();
+        });
+      },
       child: ListView.separated(
         controller: _scrollController,
         padding: const EdgeInsets.symmetric(

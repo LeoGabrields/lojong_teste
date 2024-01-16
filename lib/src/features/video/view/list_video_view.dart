@@ -7,9 +7,14 @@ import 'package:lojong_teste/src/features/video/view/widgets/video_card_player_w
 import 'package:lojong_teste/src/features/video/viewmodel/video_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class VideoView extends StatelessWidget {
+class VideoView extends StatefulWidget {
   const VideoView({super.key});
 
+  @override
+  State<VideoView> createState() => _VideoViewState();
+}
+
+class _VideoViewState extends State<VideoView> {
   @override
   Widget build(BuildContext context) {
     final videoViewModel = Provider.of<VideoViewModel>(context);
@@ -17,6 +22,11 @@ class VideoView extends StatelessWidget {
 
     return ShowErrorWidget(
       hasError: videoViewModel.hasError,
+      onPressed: () {
+        setState(() {
+          videoViewModel.loadVideos();
+        });
+      },
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(
           vertical: 19.5,

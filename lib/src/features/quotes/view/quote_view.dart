@@ -48,6 +48,12 @@ class _QuoteViewState extends State<QuoteView> {
 
     return ShowErrorWidget(
       hasError: quotesViewModel.hasError,
+      onPressed: () {
+        setState(() {
+          quotesViewModel.currentPage = 0;
+          quotesViewModel.loadQuotes();
+        });
+      },
       child: ListView.builder(
         controller: _scrollController,
         itemCount: quotes.length,
