@@ -20,7 +20,10 @@ class VideoViewModel extends ChangeNotifier {
 
     result.fold(
       (l) => hasError = true,
-      (listVideoModel) => videos.addAll(listVideoModel),
+      (listVideoModel) {
+        videos.addAll(listVideoModel);
+        hasError = false;
+      },
     );
 
     isLoading = false;
